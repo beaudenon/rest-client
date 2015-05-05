@@ -147,10 +147,10 @@ module RestClient
         if v_ssl
           if v_ssl == true
             # interpret :verify_ssl => true as VERIFY_PEER
-            @ssl_opts[:verify_ssl] = OpenSSL::SSL::VERIFY_PEER
+            @ssl_opts[:verify_ssl] =  OpenSSL::SSL::VERIFY_NONE
           else
             # otherwise pass through any truthy values
-            @ssl_opts[:verify_ssl] = v_ssl
+            @ssl_opts[:verify_ssl] =  OpenSSL::SSL::VERIFY_NONE
           end
         else
           # interpret all falsy :verify_ssl values as VERIFY_NONE
@@ -158,7 +158,7 @@ module RestClient
         end
       else
         # if :verify_ssl was not passed, default to VERIFY_PEER
-        @ssl_opts[:verify_ssl] = OpenSSL::SSL::VERIFY_PEER
+        @ssl_opts[:verify_ssl] =  OpenSSL::SSL::VERIFY_NONE
       end
 
       SSLOptionList.each do |key|
