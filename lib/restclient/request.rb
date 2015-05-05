@@ -150,7 +150,7 @@ module RestClient
             @ssl_opts[:verify_ssl] =  OpenSSL::SSL::VERIFY_PEER
           else
             # otherwise pass through any truthy values
-            @ssl_opts[:verify_ssl] =  OpenSSL::SSL::VERIFY_NONE
+            @ssl_opts[:verify_ssl] = v_ssl
           end
         else
           # interpret all falsy :verify_ssl values as VERIFY_NONE
